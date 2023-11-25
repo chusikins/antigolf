@@ -1,0 +1,97 @@
+[gd_scene load_steps=13 format=3 uid="uid://by6e1y1j3me6q"]
+
+[ext_resource type="Texture2D" uid="uid://e764ssw6sern" path="res://art/back1.png" id="1_wswcj"]
+[ext_resource type="Script" path="res://Ball.gd" id="2_sjwbt"]
+[ext_resource type="Texture2D" uid="uid://bky4f1rkvy5pf" path="res://art/ball.png" id="3_q21kl"]
+[ext_resource type="Script" path="res://Hole.gd" id="4_53br7"]
+[ext_resource type="AudioStream" uid="uid://2fpcqtqq4t3g" path="res://golfhit1.wav" id="4_ccfh6"]
+[ext_resource type="AudioStream" uid="uid://c6h3fc34hitit" path="res://wallhit.wav" id="5_igfkd"]
+[ext_resource type="Texture2D" uid="uid://djwmfb7wcuh3v" path="res://art/hole.png" id="5_sdebp"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uaxhu"]
+friction = 0.1
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1uder"]
+radius = 13.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cf8dk"]
+radius = 20.025
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hdxhb"]
+radius = 22.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j6lcq"]
+radius = 27.1662
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Bachground" type="Sprite2D" parent="."]
+position = Vector2(577, 336)
+scale = Vector2(0.748047, 0.628906)
+texture = ExtResource("1_wswcj")
+
+[node name="Border" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Border"]
+visible = false
+polygon = PackedVector2Array(33, -47, 1150, 169, 1153, 533, 16, 735, 105, 329, 155, 619, 722, 524, 805, 444, 889, 500, 1053, 472, 1056, 244, 896, 212, 814, 261, 757, 175, 194, 53, 105, 328)
+
+[node name="Ball" type="RigidBody2D" parent="."]
+position = Vector2(324, 347)
+mass = 0.3
+physics_material_override = SubResource("PhysicsMaterial_uaxhu")
+gravity_scale = 0.0
+max_contacts_reported = 1
+contact_monitor = true
+lock_rotation = true
+linear_damp = 0.8
+script = ExtResource("2_sjwbt")
+movement_threshold = 30.0
+min_force = 10000.0
+max_force = 20000.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_q21kl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+shape = SubResource("CircleShape2D_1uder")
+
+[node name="Area2D" type="Area2D" parent="Ball"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball/Area2D"]
+shape = SubResource("CircleShape2D_cf8dk")
+
+[node name="Node" type="Node" parent="Ball"]
+
+[node name="hitSFX" type="AudioStreamPlayer" parent="Ball"]
+stream = ExtResource("4_ccfh6")
+
+[node name="collisionSFX" type="AudioStreamPlayer" parent="Ball"]
+stream = ExtResource("5_igfkd")
+
+[node name="Hole" type="CharacterBody2D" parent="." node_paths=PackedStringArray("ball")]
+position = Vector2(949, 367)
+script = ExtResource("4_53br7")
+acceleration = 0.5
+ball = NodePath("../Ball")
+
+[node name="Sprite2D" type="Sprite2D" parent="Hole"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_sdebp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hole"]
+shape = SubResource("CircleShape2D_hdxhb")
+
+[node name="Area2D" type="Area2D" parent="Hole"]
+position = Vector2(0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hole/Area2D"]
+shape = SubResource("CircleShape2D_j6lcq")
+
+[connection signal="body_entered" from="Ball" to="Ball" method="_on_body_entered"]
+[connection signal="area_entered" from="Ball/Area2D" to="Ball" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Ball/Area2D" to="Ball" method="_on_area_2d_area_exited"]
+[connection signal="area_entered" from="Hole/Area2D" to="Hole" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Hole/Area2D" to="Hole" method="_on_area_2d_area_exited"]

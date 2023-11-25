@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="512"
+   height="512"
+   viewBox="0 0 135.46666 135.46667"
+   version="1.1"
+   id="svg1801"
+   sodipodi:docname="hole.svg"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
+   inkscape:export-filename="hole.png"
+   inkscape:export-xdpi="48.000004"
+   inkscape:export-ydpi="48.000004"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1803"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.72515432"
+     inkscape:cx="396.46733"
+     inkscape:cy="270.2873"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer2" />
+  <defs
+     id="defs1798">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient1863">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop1859" />
+      <stop
+         style="stop-color:#232323;stop-opacity:1;"
+         offset="0.5"
+         id="stop1869" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1863"
+       id="radialGradient1871"
+       cx="69.839989"
+       cy="127.57327"
+       fx="69.839989"
+       fy="127.57327"
+       r="58.013512"
+       gradientTransform="matrix(2.830037,-0.01514235,0.01249438,2.3350882,-130.41578,-197.49224)"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Слой 2">
+    <rect
+       style="fill:none;stroke:none;stroke-width:5.63589;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:8.45383;stroke-opacity:0.286275;paint-order:stroke fill markers"
+       id="rect2663"
+       width="135.46666"
+       height="135.46666"
+       x="0"
+       y="0" />
+  </g>
+  <g
+     inkscape:label="Слой 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <ellipse
+       style="fill:url(#radialGradient1871);stroke:none;stroke-width:5.63589;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:8.45383;stroke-opacity:0.286275;paint-order:stroke fill markers;fill-opacity:1"
+       id="path1857"
+       cx="67.73333"
+       cy="67.73333"
+       rx="58.013512"
+       ry="52.175674" />
+  </g>
+</svg>
