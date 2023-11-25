@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://cqoujufjjou5t"]
 
 [ext_resource type="PackedScene" uid="uid://0w6mvuuy8jcx" path="res://menu.tscn" id="1_7ptxq"]
-[ext_resource type="AudioStream" uid="uid://bt0rael3upush" path="res://audio/bgmusictemp.ogg" id="2_4y0br"]
+[ext_resource type="AudioStream" uid="uid://bt0rael3upush" path="res://audio/bgmusictemp.ogg" id="2_tlkgm"]
 
 [node name="Main" type="Node"]
 
 [node name="Menu" parent="." instance=ExtResource("1_7ptxq")]
 
 [node name="bgmusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_4y0br")
+stream = ExtResource("2_tlkgm")
 volume_db = -5.0
 autoplay = true

@@ -73,15 +73,21 @@ func _mouse_released():
 
 
 func _on_area_2d_area_entered(area):
-	print(area.name, "entered ball")
+	# print(area.name, " entered ball")
 	# change scenes
-	get_tree().change_scene_to_file("res://level_2.tscn")
+	if area.name == "hole_area":
+		get_tree().change_scene_to_file("res://level_2.tscn")
+	if area.name == "SandArea":
+		print("Ball in sand!")
+		print("x = ", linear_velocity.length())
+		linear_velocity = linear_velocity * (0.5)
+		print("x = ", linear_velocity.length())
 	
 
 
 func _on_area_2d_area_exited(area):
-	print(area.name, "exited ball")
-
+	print(area.name, " exited ball")
+	
 
 func _on_body_entered(body):
 	$collisionSFX.play()
