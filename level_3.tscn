@@ -41,7 +41,7 @@ script = ExtResource("5_8lv8f")
 
 [node name="Overlay" parent="." instance=ExtResource("6_ddg7h")]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Greatjob" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_7368k")
 
 [connection signal="hit" from="Ball" to="." method="_on_ball_hit"]
