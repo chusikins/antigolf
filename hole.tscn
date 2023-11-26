@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ee8n4qk4x6ki"]
+[gd_scene load_steps=6 format=3 uid="uid://dom1m8uymxqbe"]
 
 [ext_resource type="Script" path="res://Hole.gd" id="1_ujn7t"]
 [ext_resource type="Texture2D" uid="uid://djwmfb7wcuh3v" path="res://art/hole.png" id="2_6rr8h"]
@@ -10,11 +10,10 @@ radius = 22.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_j6lcq"]
 radius = 27.1662
 
-[node name="Hole" type="CharacterBody2D" node_paths=PackedStringArray("ball")]
+[node name="Hole" type="CharacterBody2D"]
 position = Vector2(949, 367)
 script = ExtResource("1_ujn7t")
 acceleration = 0.5
-ball = NodePath("")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
@@ -33,3 +32,4 @@ shape = SubResource("CircleShape2D_j6lcq")
 [connection signal="area_entered" from="hole_area" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="hole_area" to="." method="_on_area_2d_area_exited"]
 [connection signal="body_entered" from="hole_area" to="hole_area" method="_on_body_entered"]
+[connection signal="lvl_complete" from="hole_area" to="." method="_on_hole_area_lvl_complete"]
