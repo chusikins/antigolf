@@ -1,7 +1,7 @@
 extends Node2D
 
 var score = 0
-var reqscore = 2
+var reqscore = 5
 @onready var gos = $Overlay/Game_Over
 @onready var finscore = $Overlay/Game_Over/Panel/Score
 @onready var levelcomp = $Overlay/Game_Over/Panel/GameOver
