@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://7ch3vhisyrja"]
+
+[ext_resource type="Script" path="res://level_3.gd" id="1_7myrl"]
+[ext_resource type="Texture2D" uid="uid://bsqmt8imursob" path="res://art/back3.png" id="1_ofjyj"]
+[ext_resource type="PackedScene" uid="uid://btmtgx4fc0q0a" path="res://ball.tscn" id="2_ymjso"]
+[ext_resource type="PackedScene" uid="uid://b5uf471e7ddux" path="res://hole.tscn" id="3_qew5d"]
+[ext_resource type="Texture2D" uid="uid://d0lypevw3o2x6" path="res://art/exit.png" id="4_v262w"]
+[ext_resource type="Script" path="res://button_script.gd" id="5_8lv8f"]
+[ext_resource type="PackedScene" uid="uid://dhd5j2tr05gc6" path="res://overlay.tscn" id="6_ddg7h"]
+
+[node name="Level 3" type="Node2D"]
+script = ExtResource("1_7myrl")
+
+[node name="Bachground" type="Sprite2D" parent="."]
+position = Vector2(577, 336)
+scale = Vector2(0.748047, 0.628906)
+texture = ExtResource("1_ofjyj")
+
+[node name="Border" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Border"]
+polygon = PackedVector2Array(227, 267, 1074, 39, 1126, 639, 61, 364, 43, 344, 189, 377, 357, 426, 743, 517, 885, 558, 1110, 616, 1080, 321, 1070, 196, 1051, 66, 754, 148, 227, 294, 37, 335)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Border"]
+polygon = PackedVector2Array(784, 404, 776, 386, 760, 344, 775, 309, 807, 272, 857, 265, 904, 261, 960, 296, 977, 345, 957, 390, 931, 427, 867, 432, 808, 417)
+
+[node name="Ball" parent="." instance=ExtResource("2_ymjso")]
+
+[node name="Hole" parent="." node_paths=PackedStringArray("ball") instance=ExtResource("3_qew5d")]
+position = Vector2(716, 337)
+ball = NodePath("../Ball")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 36.0
+offset_top = 35.0
+offset_right = 94.0
+offset_bottom = 93.0
+icon = ExtResource("4_v262w")
+script = ExtResource("5_8lv8f")
+
+[node name="Overlay" parent="." instance=ExtResource("6_ddg7h")]
+
+[connection signal="hit" from="Ball" to="." method="_on_ball_hit"]
+[connection signal="lvl_complete" from="Hole" to="." method="_on_hole_lvl_complete"]
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

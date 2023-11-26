@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwv0o6n6p6miq"]
+[gd_scene load_steps=3 format=3 uid="uid://dhd5j2tr05gc6"]
 
 [ext_resource type="Script" path="res://overlay.gd" id="1_hql40"]
-[ext_resource type="PackedScene" uid="uid://os8fap05oyf8" path="res://gameover.tscn" id="2_unv7y"]
+[ext_resource type="PackedScene" uid="uid://51i50oprbx13" path="res://gameover.tscn" id="2_unv7y"]
 
 [node name="Overlay" type="CanvasLayer"]
 script = ExtResource("1_hql40")
