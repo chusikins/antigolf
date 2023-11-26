@@ -1,6 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://0w6mvuuy8jcx"]
+[gd_scene load_steps=6 format=3 uid="uid://0w6mvuuy8jcx"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_27eok"]
+[ext_resource type="FontFile" uid="uid://uakgvqmscy1p" path="res://fonts/Xolonium-Regular.ttf" id="2_l7max"]
+[ext_resource type="Texture2D" uid="uid://dpp6i8153ti8y" path="res://art/button.png" id="2_u2xvt"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lwf7f"]
+texture = ExtResource("2_u2xvt")
+texture_margin_bottom = 2.0
+expand_margin_left = 20.0
+expand_margin_top = 10.0
+expand_margin_right = 20.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="Theme" id="Theme_db3sf"]
+Button/font_sizes/font_size = 25
+Button/fonts/font = ExtResource("2_l7max")
+Button/styles/normal = SubResource("StyleBoxTexture_lwf7f")
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -24,6 +39,8 @@ offset_right = 49.5
 offset_bottom = 50.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_db3sf")
+theme_override_constants/separation = 20
 
 [node name="Start Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
