@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var acceleration:float = 100
 @export var ball: RigidBody2D
 signal lvl_complete
-var speed = 100
+var speed = 20
 
 func _physics_process(delta):
 	speed += delta * acceleration

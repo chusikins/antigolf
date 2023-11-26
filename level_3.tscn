@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://7ch3vhisyrja"]
+[gd_scene load_steps=9 format=3 uid="uid://7ch3vhisyrja"]
 
 [ext_resource type="Script" path="res://level_3.gd" id="1_7myrl"]
 [ext_resource type="Texture2D" uid="uid://bsqmt8imursob" path="res://art/back3.png" id="1_ofjyj"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://d0lypevw3o2x6" path="res://art/exit.png" id="4_v262w"]
 [ext_resource type="Script" path="res://button_script.gd" id="5_8lv8f"]
 [ext_resource type="PackedScene" uid="uid://dhd5j2tr05gc6" path="res://overlay.tscn" id="6_ddg7h"]
+[ext_resource type="AudioStream" uid="uid://bfmbn1kmoqerl" path="res://audio/greatjob.wav" id="8_7368k"]
 
 [node name="Level 3" type="Node2D"]
 script = ExtResource("1_7myrl")
@@ -39,6 +40,9 @@ icon = ExtResource("4_v262w")
 script = ExtResource("5_8lv8f")
 
 [node name="Overlay" parent="." instance=ExtResource("6_ddg7h")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_7368k")
 
 [connection signal="hit" from="Ball" to="." method="_on_ball_hit"]
 [connection signal="lvl_complete" from="Hole" to="." method="_on_hole_lvl_complete"]
