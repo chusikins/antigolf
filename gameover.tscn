@@ -1,0 +1,146 @@
+[gd_scene load_steps=4 format=3 uid="uid://os8fap05oyf8"]
+
+[ext_resource type="Script" path="res://gameover.gd" id="1_pt5j5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1r0hd"]
+bg_color = Color(0.823529, 0.52549, 0.0823529, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_11joc"]
+font_size = 30
+
+[node name="gameover" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pt5j5")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 649.0
+color = Color(0, 0, 0, 0.588235)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -244.0
+offset_top = -152.0
+offset_right = 244.0
+offset_bottom = 152.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1r0hd")
+
+[node name="GameOver" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -45.5
+offset_right = 45.5
+offset_bottom = 42.0
+grow_horizontal = 2
+text = "Level"
+label_settings = SubResource("LabelSettings_11joc")
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -78.0
+offset_top = 76.0
+offset_right = 78.0
+offset_bottom = 108.0
+grow_horizontal = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Retry" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 222.0
+offset_right = 289.0
+offset_bottom = 254.0
+text = "Retry"
+
+[node name="FinalScore" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.0
+offset_top = -107.0
+offset_right = 78.0
+offset_bottom = -76.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Your Final Score"
+horizontal_alignment = 1
+
+[node name="ReqScoreText" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.0
+offset_top = -44.0
+offset_right = 78.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Required Score"
+horizontal_alignment = 1
+
+[node name="MainMenu" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 66.0
+offset_top = 70.0
+offset_right = 163.0
+offset_bottom = 102.0
+grow_vertical = 2
+text = "Main Menu"
+
+[node name="NextLevel" type="Button" parent="Panel"]
+offset_left = 322.0
+offset_top = 222.0
+offset_right = 419.0
+offset_bottom = 254.0
+text = "Next"
+
+[node name="ReqScoreNum" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.0
+offset_top = -13.0
+offset_right = 78.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Panel/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="Panel/MainMenu" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="Panel/NextLevel" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/NextLevel" to="." method="_on_next_level_pressed"]

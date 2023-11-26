@@ -1,10 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://eg53p57p28cv"]
+[gd_scene load_steps=3 format=3 uid="uid://bwv0o6n6p6miq"]
 
 [ext_resource type="Script" path="res://overlay.gd" id="1_hql40"]
-[ext_resource type="Texture2D" uid="uid://cwc88nwuv76g2" path="res://art/dialog.png" id="2_acktr"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xe7un"]
-texture = ExtResource("2_acktr")
+[ext_resource type="PackedScene" uid="uid://os8fap05oyf8" path="res://gameover.tscn" id="2_unv7y"]
 
 [node name="Overlay" type="CanvasLayer"]
 script = ExtResource("1_hql40")
@@ -24,70 +21,5 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Score: 0"
 
-[node name="Dialog" type="Panel" parent="."]
+[node name="Game_Over" parent="." instance=ExtResource("2_unv7y")]
 visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -198.5
-offset_top = -167.0
-offset_right = 198.5
-offset_bottom = 167.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_xe7un")
-
-[node name="Wrapper" type="MarginContainer" parent="Dialog"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -156.5
-offset_top = -156.5
-offset_right = 156.5
-offset_bottom = 156.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 30
-
-[node name="Info" type="VBoxContainer" parent="Dialog/Wrapper"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-alignment = 1
-
-[node name="Header" type="Label" parent="Dialog/Wrapper/Info"]
-layout_mode = 2
-text = "Level"
-
-[node name="Score" type="Label" parent="Dialog/Wrapper/Info"]
-layout_mode = 2
-text = "Score: 0"
-
-[node name="Required" type="Label" parent="Dialog/Wrapper/Info"]
-layout_mode = 2
-text = "Required:"
-
-[node name="Navigation" type="HBoxContainer" parent="Dialog/Wrapper"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-
-[node name="MenuButton" type="Button" parent="Dialog/Wrapper/Navigation"]
-layout_mode = 2
-text = "Main Menu"
-
-[node name="ReplayButton" type="Button" parent="Dialog/Wrapper/Navigation"]
-layout_mode = 2
-text = "Restart Level"
-
-[node name="NextButton" type="Button" parent="Dialog/Wrapper/Navigation"]
-layout_mode = 2
-text = "Next Level"
