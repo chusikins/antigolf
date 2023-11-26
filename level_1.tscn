@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://by6e1y1j3me6q"]
+[gd_scene load_steps=16 format=3 uid="uid://by6e1y1j3me6q"]
 
 [ext_resource type="Texture2D" uid="uid://e764ssw6sern" path="res://art/back1.png" id="1_wswcj"]
 [ext_resource type="Script" path="res://Ball.gd" id="2_sjwbt"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://2fpcqtqq4t3g" path="res://audio/golfhit1.wav" id="4_ccfh6"]
 [ext_resource type="AudioStream" uid="uid://c6h3fc34hitit" path="res://audio/wallhit.wav" id="5_igfkd"]
 [ext_resource type="Texture2D" uid="uid://djwmfb7wcuh3v" path="res://art/hole.png" id="5_sdebp"]
+[ext_resource type="Script" path="res://next_level.gd" id="8_3cy6x"]
 [ext_resource type="Texture2D" uid="uid://d0lypevw3o2x6" path="res://art/exit.png" id="8_eucoa"]
 [ext_resource type="Script" path="res://button_script.gd" id="9_58efu"]
 
@@ -26,7 +27,7 @@ radius = 22.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_j6lcq"]
 radius = 27.1662
 
-[node name="Node2D" type="Node2D"]
+[node name="Level 1" type="Node2D"]
 
 [node name="Bachground" type="Sprite2D" parent="."]
 position = Vector2(577, 336)
@@ -39,7 +40,7 @@ texture = ExtResource("1_wswcj")
 visible = false
 polygon = PackedVector2Array(33, -47, 1150, 169, 1153, 533, 16, 735, 105, 329, 155, 619, 722, 524, 805, 444, 889, 500, 1053, 472, 1056, 244, 896, 212, 814, 261, 757, 175, 194, 53, 105, 328)
 
-[node name="Ball" type="RigidBody2D" parent="."]
+[node name="Ball" type="RigidBody2D" parent="." groups=["Player"]]
 position = Vector2(324, 347)
 mass = 0.3
 physics_material_override = SubResource("PhysicsMaterial_uaxhu")
@@ -88,6 +89,7 @@ shape = SubResource("CircleShape2D_hdxhb")
 
 [node name="hole_area" type="Area2D" parent="Hole"]
 position = Vector2(0, 1)
+script = ExtResource("8_3cy6x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hole/hole_area"]
 shape = SubResource("CircleShape2D_j6lcq")
@@ -105,4 +107,5 @@ script = ExtResource("9_58efu")
 [connection signal="area_exited" from="Ball/ball_area" to="Ball" method="_on_area_2d_area_exited"]
 [connection signal="area_entered" from="Hole/hole_area" to="Hole" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Hole/hole_area" to="Hole" method="_on_area_2d_area_exited"]
+[connection signal="body_entered" from="Hole/hole_area" to="Hole/hole_area" method="_on_body_entered"]
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

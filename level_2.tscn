@@ -1,12 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://cy5p3jw4dl1j"]
+[gd_scene load_steps=18 format=3 uid="uid://cy5p3jw4dl1j"]
 
 [ext_resource type="Texture2D" uid="uid://e1obor2hh20d" path="res://art/back2.jpg" id="1_28l8m"]
 [ext_resource type="Script" path="res://Ball.gd" id="2_tg1t6"]
 [ext_resource type="Texture2D" uid="uid://bky4f1rkvy5pf" path="res://art/ball.png" id="3_ptj1y"]
-[ext_resource type="AudioStream" uid="uid://2fpcqtqq4t3g" path="res://golfhit1.wav" id="4_e80xq"]
+[ext_resource type="AudioStream" uid="uid://2fpcqtqq4t3g" path="res://audio/golfhit1.wav" id="4_e80xq"]
 [ext_resource type="Script" path="res://Hole.gd" id="4_xfcgq"]
 [ext_resource type="Texture2D" uid="uid://djwmfb7wcuh3v" path="res://art/hole.png" id="5_56ium"]
-[ext_resource type="AudioStream" uid="uid://c6h3fc34hitit" path="res://wallhit.wav" id="5_lxh6v"]
+[ext_resource type="AudioStream" uid="uid://c6h3fc34hitit" path="res://audio/wallhit.wav" id="5_lxh6v"]
+[ext_resource type="Script" path="res://next_level.gd" id="5_oren8"]
 [ext_resource type="Texture2D" uid="uid://casb3jvy0si70" path="res://art/sand.png" id="8_omerm"]
 [ext_resource type="Texture2D" uid="uid://d0lypevw3o2x6" path="res://art/exit.png" id="9_i0jpc"]
 [ext_resource type="Script" path="res://button_script.gd" id="10_fdi0p"]
@@ -30,7 +31,7 @@ radius = 13.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_2mr4k"]
 radius = 20.025
 
-[node name="Level 2" type="Node"]
+[node name="Level 2" type="Node2D"]
 
 [node name="Bachground" type="Sprite2D" parent="."]
 position = Vector2(578, 325.5)
@@ -48,11 +49,9 @@ scale = Vector2(0.404762, 0.448)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SandArea"]
 position = Vector2(-1.23535, 0)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_73y3h")
 
 [node name="Sand" type="Sprite2D" parent="SandArea"]
-scale = Vector2(1, 1)
 texture = ExtResource("8_omerm")
 
 [node name="Hole" type="CharacterBody2D" parent="." node_paths=PackedStringArray("ball")]
@@ -70,11 +69,12 @@ shape = SubResource("CircleShape2D_5gw7r")
 
 [node name="hole_area" type="Area2D" parent="Hole"]
 position = Vector2(0, 1)
+script = ExtResource("5_oren8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hole/hole_area"]
 shape = SubResource("CircleShape2D_k3m6f")
 
-[node name="Ball" type="RigidBody2D" parent="."]
+[node name="Ball" type="RigidBody2D" parent="." groups=["Player"]]
 position = Vector2(324, 347)
 mass = 0.3
 physics_material_override = SubResource("PhysicsMaterial_5srvg")
@@ -119,6 +119,7 @@ script = ExtResource("10_fdi0p")
 [connection signal="area_shape_entered" from="SandArea" to="Ball" method="_on_area_2d_area_shape_entered"]
 [connection signal="area_entered" from="Hole/hole_area" to="Hole" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Hole/hole_area" to="Hole" method="_on_area_2d_area_exited"]
+[connection signal="body_entered" from="Hole/hole_area" to="Hole/hole_area" method="_on_body_entered"]
 [connection signal="body_entered" from="Ball" to="Ball" method="_on_body_entered"]
 [connection signal="area_entered" from="Ball/ball_area" to="Ball" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Ball/ball_area" to="Ball" method="_on_area_2d_area_exited"]

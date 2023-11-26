@@ -75,8 +75,8 @@ func _mouse_released():
 func _on_area_2d_area_entered(area):
 	# print(area.name, " entered ball")
 	# change scenes
-	if area.name == "hole_area":
-		get_tree().change_scene_to_file("res://level_2.tscn")
+	#if area.name == "hole_area":
+		#print("area check")
 	if area.name == "SandArea":
 		print("Ball in sand!")
 		print("x = ", linear_velocity.length())
