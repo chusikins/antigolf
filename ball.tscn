@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://8cjwr4g6bfgj"]
+
+[ext_resource type="Script" path="res://Ball.gd" id="1_p0pmf"]
+[ext_resource type="Texture2D" uid="uid://bky4f1rkvy5pf" path="res://art/ball.png" id="2_u7bqc"]
+[ext_resource type="AudioStream" uid="uid://2fpcqtqq4t3g" path="res://audio/golfhit1.wav" id="3_5fqpc"]
+[ext_resource type="AudioStream" uid="uid://c6h3fc34hitit" path="res://audio/wallhit.wav" id="4_supgu"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uaxhu"]
+friction = 0.1
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1uder"]
+radius = 13.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cf8dk"]
+radius = 20.025
+
+[node name="Ball" type="RigidBody2D" groups=["Player"]]
+position = Vector2(324, 347)
+mass = 0.3
+physics_material_override = SubResource("PhysicsMaterial_uaxhu")
+gravity_scale = 0.0
+max_contacts_reported = 1
+contact_monitor = true
+lock_rotation = true
+linear_damp = 0.8
+script = ExtResource("1_p0pmf")
+movement_threshold = 30.0
+min_force = 10000.0
+max_force = 20000.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_u7bqc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1uder")
+
+[node name="ball_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ball_area"]
+shape = SubResource("CircleShape2D_cf8dk")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="hitSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_5fqpc")
+
+[node name="collisionSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_supgu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="ball_area" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="ball_area" to="." method="_on_area_2d_area_exited"]

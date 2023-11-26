@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+signal hit
+
 @export var movement_threshold:float = 10
 @export var min_vector:float = 100
 @export var max_vector:float = 200
@@ -67,6 +69,7 @@ func _mouse_released():
 #		print_debug(position, end_point, direction, force)
 		
 		apply_force(direction * force)
+		emit_signal("hit")
 		_play_hit_sfx()
 
 
