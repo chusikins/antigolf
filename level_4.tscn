@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://dhl6bho5khei"]
+
+[ext_resource type="Texture2D" uid="uid://km2yvs8cplyk" path="res://art/back2.png" id="1_firb5"]
+[ext_resource type="PackedScene" uid="uid://8cjwr4g6bfgj" path="res://ball.tscn" id="2_eo2mw"]
+[ext_resource type="PackedScene" uid="uid://ee8n4qk4x6ki" path="res://hole.tscn" id="3_idpf7"]
+[ext_resource type="Texture2D" uid="uid://d0lypevw3o2x6" path="res://art/exit.png" id="4_yqdvk"]
+[ext_resource type="Script" path="res://scripts/button_script.gd" id="5_mycdo"]
+[ext_resource type="PackedScene" uid="uid://eg53p57p28cv" path="res://overlay.tscn" id="6_gqenu"]
+
+[node name="Level 4" type="Node"]
+
+[node name="Bachground" type="Sprite2D" parent="."]
+position = Vector2(577, 336)
+scale = Vector2(0.748047, 0.628906)
+texture = ExtResource("1_firb5")
+
+[node name="Border" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Border"]
+visible = false
+polygon = PackedVector2Array(83, 70, 447, 211, 580, 264, 1056, 58, 1071, 63, 1071, 94, 1004, 334, 1075, 562, 1086, 622, 1061, 636, 944, 587, 763, 518, 632, 472, 555, 475, 317, 550, 100, 622, 82, 606, 174, 364, 108, 595, 451, 484, 573, 446, 830, 520, 1067, 611, 1033, 486, 984, 339, 1050, 86, 588, 289, 537, 279, 179, 130, 106, 94, 133, 145, 179, 367)
+
+[node name="Ball" parent="." instance=ExtResource("2_eo2mw")]
+
+[node name="Hole" parent="." node_paths=PackedStringArray("ball") instance=ExtResource("3_idpf7")]
+position = Vector2(911, 351)
+ball = NodePath("../Ball")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 36.0
+offset_top = 35.0
+offset_right = 94.0
+offset_bottom = 93.0
+icon = ExtResource("4_yqdvk")
+script = ExtResource("5_mycdo")
+
+[node name="Overlay" parent="." instance=ExtResource("6_gqenu")]
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
