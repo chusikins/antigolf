@@ -117,6 +117,7 @@ grow_vertical = 2
 text = "Main Menu"
 
 [node name="NextLevel" type="Button" parent="Panel"]
+visible = false
 layout_mode = 0
 offset_left = 322.0
 offset_top = 222.0
@@ -141,7 +142,7 @@ text = "0"
 horizontal_alignment = 1
 
 [connection signal="pressed" from="Panel/Retry" to="." method="_on_retry_pressed"]
-[connection signal="pressed" from="Panel/MainMenu" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Panel/MainMenu" to="." method="_on_main_menu_pressed"]
-[connection signal="pressed" from="Panel/NextLevel" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/MainMenu" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Panel/NextLevel" to="." method="_on_next_level_pressed"]
+[connection signal="pressed" from="Panel/NextLevel" to="." method="_on_button_pressed"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://btmtgx4fc0q0a"]
 
 [ext_resource type="Script" path="res://Ball.gd" id="1_p0pmf"]
-[ext_resource type="Texture2D" uid="uid://bky4f1rkvy5pf" path="res://art/ball.png" id="2_u7bqc"]
+[ext_resource type="Texture2D" uid="uid://dvgq18e0kv7s8" path="res://art/golf.png" id="2_t15bb"]
 [ext_resource type="AudioStream" uid="uid://2fpcqtqq4t3g" path="res://audio/golfhit1.wav" id="3_5fqpc"]
 [ext_resource type="AudioStream" uid="uid://c6h3fc34hitit" path="res://audio/wallhit.wav" id="4_supgu"]
 
@@ -30,8 +30,8 @@ min_force = 10000.0
 max_force = 20000.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_u7bqc")
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("2_t15bb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_1uder")
