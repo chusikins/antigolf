@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dom1m8uymxqbe"]
+[gd_scene load_steps=6 format=3 uid="uid://b5uf471e7ddux"]
 
 [ext_resource type="Script" path="res://Hole.gd" id="1_ujn7t"]
 [ext_resource type="Texture2D" uid="uid://djwmfb7wcuh3v" path="res://art/hole.png" id="2_6rr8h"]

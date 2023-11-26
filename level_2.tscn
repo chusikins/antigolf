@@ -1,112 +1,46 @@
-[gd_scene load_steps=18 format=3 uid="uid://cy5p3jw4dl1j"]
+[gd_scene load_steps=9 format=3 uid="uid://cy5p3jw4dl1j"]
 
-[ext_resource type="Texture2D" uid="uid://e1obor2hh20d" path="res://art/back2.jpg" id="1_28l8m"]
-[ext_resource type="Script" path="res://Ball.gd" id="2_tg1t6"]
-[ext_resource type="Texture2D" uid="uid://bky4f1rkvy5pf" path="res://art/ball.png" id="3_ptj1y"]
-[ext_resource type="AudioStream" uid="uid://2fpcqtqq4t3g" path="res://audio/golfhit1.wav" id="4_e80xq"]
-[ext_resource type="Script" path="res://Hole.gd" id="4_xfcgq"]
-[ext_resource type="Texture2D" uid="uid://djwmfb7wcuh3v" path="res://art/hole.png" id="5_56ium"]
-[ext_resource type="AudioStream" uid="uid://c6h3fc34hitit" path="res://audio/wallhit.wav" id="5_lxh6v"]
-[ext_resource type="Script" path="res://next_level.gd" id="5_oren8"]
-[ext_resource type="Texture2D" uid="uid://casb3jvy0si70" path="res://art/sand.png" id="8_omerm"]
+[ext_resource type="Texture2D" uid="uid://dm5r05ls0gibw" path="res://art/back4.png" id="1_6m0ec"]
+[ext_resource type="Script" path="res://level_2.gd" id="1_d8ax8"]
+[ext_resource type="PackedScene" uid="uid://btmtgx4fc0q0a" path="res://ball.tscn" id="2_61s8f"]
+[ext_resource type="PackedScene" uid="uid://b5uf471e7ddux" path="res://hole.tscn" id="3_ix8f3"]
+[ext_resource type="PackedScene" uid="uid://dhd5j2tr05gc6" path="res://overlay.tscn" id="7_vjjgo"]
 [ext_resource type="Texture2D" uid="uid://d0lypevw3o2x6" path="res://art/exit.png" id="9_i0jpc"]
-[ext_resource type="Script" path="res://button_script.gd" id="10_fdi0p"]
+[ext_resource type="Script" path="res://button_script.gd" id="10_5b2vl"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_73y3h"]
-size = Vector2(343.412, 263.393)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_5gw7r"]
-radius = 22.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_k3m6f"]
-radius = 27.1662
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5srvg"]
-friction = 0.1
-bounce = 1.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_xkyds"]
-radius = 13.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_2mr4k"]
-radius = 20.025
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aoubm"]
+size = Vector2(991.812, 197.977)
 
 [node name="Level 2" type="Node2D"]
+script = ExtResource("1_d8ax8")
 
 [node name="Bachground" type="Sprite2D" parent="."]
-position = Vector2(578, 325.5)
-scale = Vector2(1.46616, 1.20336)
-texture = ExtResource("1_28l8m")
+position = Vector2(576.5, 324)
+scale = Vector2(0.736328, 0.615234)
+texture = ExtResource("1_6m0ec")
 
 [node name="Border" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Border"]
-polygon = PackedVector2Array(7, 7, 1138, 12, 1159, 643, -1, 647, 2, 9, 41, 617, 239, 614, 395, 614, 912, 614, 1122, 446, 1117, 275, 1123, 36, 40, 36, 40, 610)
+visible = false
+position = Vector2(6, 8)
+rotation = -0.00986204
+polygon = PackedVector2Array(338.903, 214.353, 755.379, 269.463, 1084.46, 59.6978, 1010.25, 587.992, 755.269, 483.472, 380.672, 440.776, 47.3959, 568.495, 148.342, 67.4662, 135.698, 31.3398, 120.698, 31.1918, 23.2294, 585.258, 32.081, 600.346, 375.554, 452.726, 753.101, 500.451, 1027.03, 610.158, 1104.82, 23.8967, 751.587, 248.424, 361.099, 194.571, 144.707, 30.4286, 148.371, 64.4664)
+
+[node name="Ball" parent="." instance=ExtResource("2_61s8f")]
+
+[node name="Hole" parent="." node_paths=PackedStringArray("ball") instance=ExtResource("3_ix8f3")]
+position = Vector2(946, 365)
+ball = NodePath("../Ball")
 
 [node name="SandArea" type="Area2D" parent="."]
 position = Vector2(761, 210)
 scale = Vector2(0.404762, 0.448)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SandArea"]
-position = Vector2(-1.23535, 0)
-shape = SubResource("RectangleShape2D_73y3h")
-
-[node name="Sand" type="Sprite2D" parent="SandArea"]
-texture = ExtResource("8_omerm")
-
-[node name="Hole" type="CharacterBody2D" parent="." node_paths=PackedStringArray("ball")]
-position = Vector2(949, 367)
-script = ExtResource("4_xfcgq")
-acceleration = 0.5
-ball = NodePath("../Ball")
-
-[node name="Sprite2D" type="Sprite2D" parent="Hole"]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("5_56ium")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hole"]
-shape = SubResource("CircleShape2D_5gw7r")
-
-[node name="hole_area" type="Area2D" parent="Hole"]
-position = Vector2(0, 1)
-script = ExtResource("5_oren8")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hole/hole_area"]
-shape = SubResource("CircleShape2D_k3m6f")
-
-[node name="Ball" type="RigidBody2D" parent="." groups=["Player"]]
-position = Vector2(324, 347)
-mass = 0.3
-physics_material_override = SubResource("PhysicsMaterial_5srvg")
-gravity_scale = 0.0
-max_contacts_reported = 1
-contact_monitor = true
-lock_rotation = true
-linear_damp = 0.8
-script = ExtResource("2_tg1t6")
-movement_threshold = 30.0
-min_force = 10000.0
-max_force = 20000.0
-
-[node name="Sprite2D" type="Sprite2D" parent="Ball"]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("3_ptj1y")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
-shape = SubResource("CircleShape2D_xkyds")
-
-[node name="ball_area" type="Area2D" parent="Ball"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball/ball_area"]
-shape = SubResource("CircleShape2D_2mr4k")
-
-[node name="Node" type="Node" parent="Ball"]
-
-[node name="hitSFX" type="AudioStreamPlayer" parent="Ball"]
-stream = ExtResource("4_e80xq")
-
-[node name="collisionSFX" type="AudioStreamPlayer" parent="Ball"]
-stream = ExtResource("5_lxh6v")
+position = Vector2(-484.49, 304.725)
+rotation = 0.0749309
+shape = SubResource("RectangleShape2D_aoubm")
 
 [node name="Button" type="Button" parent="."]
 offset_left = 36.0
@@ -114,13 +48,10 @@ offset_top = 35.0
 offset_right = 94.0
 offset_bottom = 93.0
 icon = ExtResource("9_i0jpc")
-script = ExtResource("10_fdi0p")
+script = ExtResource("10_5b2vl")
 
-[connection signal="area_shape_entered" from="SandArea" to="Ball" method="_on_area_2d_area_shape_entered"]
-[connection signal="area_entered" from="Hole/hole_area" to="Hole" method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="Hole/hole_area" to="Hole" method="_on_area_2d_area_exited"]
-[connection signal="body_entered" from="Hole/hole_area" to="Hole/hole_area" method="_on_body_entered"]
-[connection signal="body_entered" from="Ball" to="Ball" method="_on_body_entered"]
-[connection signal="area_entered" from="Ball/ball_area" to="Ball" method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="Ball/ball_area" to="Ball" method="_on_area_2d_area_exited"]
+[node name="Overlay" parent="." instance=ExtResource("7_vjjgo")]
+
+[connection signal="hit" from="Ball" to="." method="_on_ball_hit"]
+[connection signal="lvl_complete" from="Hole" to="." method="_on_hole_lvl_complete"]
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
