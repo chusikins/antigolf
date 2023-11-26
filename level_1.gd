@@ -24,6 +24,7 @@ func _on_hole_lvl_complete():
 	reqscorenum.text = str(reqscore)
 	if score >= reqscore:
 		levelcomp.text = "Level Complete!"
+		$Greatjob.play()
 	else:
 		levelcomp.text = "Level Failed"
 	gos.visible = true

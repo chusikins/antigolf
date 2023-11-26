@@ -117,6 +117,7 @@ grow_vertical = 2
 text = "Main Menu"
 
 [node name="NextLevel" type="Button" parent="Panel"]
+layout_mode = 0
 offset_left = 322.0
 offset_top = 222.0
 offset_right = 419.0
