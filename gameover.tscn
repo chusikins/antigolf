@@ -1,9 +1,41 @@
-[gd_scene load_steps=4 format=3 uid="uid://51i50oprbx13"]
+[gd_scene load_steps=11 format=3 uid="uid://51i50oprbx13"]
 
 [ext_resource type="Script" path="res://gameover.gd" id="1_pt5j5"]
+[ext_resource type="FontFile" uid="uid://uakgvqmscy1p" path="res://fonts/Xolonium-Regular.ttf" id="2_a5sgx"]
+[ext_resource type="Texture2D" uid="uid://blqse2gwopgyy" path="res://art/button_lit.png" id="3_beh5t"]
+[ext_resource type="Texture2D" uid="uid://dpp6i8153ti8y" path="res://art/button.png" id="3_fx4rd"]
+[ext_resource type="Texture2D" uid="uid://cwc88nwuv76g2" path="res://art/dialog.png" id="4_3syta"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1r0hd"]
-bg_color = Color(0.823529, 0.52549, 0.0823529, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uopax"]
+texture = ExtResource("3_beh5t")
+expand_margin_left = 20.0
+expand_margin_top = 5.0
+expand_margin_right = 20.0
+expand_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qhw12"]
+texture = ExtResource("3_fx4rd")
+expand_margin_left = 20.0
+expand_margin_top = 5.0
+expand_margin_right = 20.0
+expand_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4pvgu"]
+texture = ExtResource("4_3syta")
+expand_margin_left = 5.0
+expand_margin_top = 10.0
+expand_margin_right = 5.0
+
+[sub_resource type="Theme" id="Theme_jjace"]
+Button/fonts/font = ExtResource("2_a5sgx")
+Button/styles/focus = SubResource("StyleBoxTexture_uopax")
+Button/styles/hover = SubResource("StyleBoxTexture_uopax")
+Button/styles/normal = SubResource("StyleBoxTexture_qhw12")
+Button/styles/pressed = SubResource("StyleBoxTexture_uopax")
+HBoxContainer/constants/separation = 43
+Label/font_sizes/font_size = 20
+Label/fonts/font = ExtResource("2_a5sgx")
+Panel/styles/panel = SubResource("StyleBoxTexture_4pvgu")
 
 [sub_resource type="LabelSettings" id="LabelSettings_11joc"]
 font_size = 30
@@ -36,7 +68,7 @@ offset_right = 244.0
 offset_bottom = 152.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_1r0hd")
+theme = SubResource("Theme_jjace")
 
 [node name="GameOver" type="Label" parent="Panel"]
 layout_mode = 1
@@ -49,6 +81,22 @@ offset_bottom = 42.0
 grow_horizontal = 2
 text = "Level"
 label_settings = SubResource("LabelSettings_11joc")
+horizontal_alignment = 1
+
+[node name="FinalScore" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.0
+offset_top = -107.0
+offset_right = 87.0
+offset_bottom = -76.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Your Final Score"
 horizontal_alignment = 1
 
 [node name="Score" type="Label" parent="Panel"]
@@ -64,30 +112,6 @@ grow_horizontal = 2
 text = "0"
 horizontal_alignment = 1
 
-[node name="Retry" type="Button" parent="Panel"]
-layout_mode = 0
-offset_left = 192.0
-offset_top = 222.0
-offset_right = 289.0
-offset_bottom = 254.0
-text = "Retry"
-
-[node name="FinalScore" type="Label" parent="Panel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -78.0
-offset_top = -107.0
-offset_right = 78.0
-offset_bottom = -76.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Your Final Score"
-horizontal_alignment = 1
-
 [node name="ReqScoreText" type="Label" parent="Panel"]
 layout_mode = 1
 anchors_preset = 8
@@ -95,35 +119,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -78.0
+offset_left = -81.0
 offset_top = -44.0
-offset_right = 78.0
+offset_right = 81.0
 offset_bottom = -13.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Required Score"
 horizontal_alignment = 1
-
-[node name="MainMenu" type="Button" parent="Panel"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 66.0
-offset_top = 70.0
-offset_right = 163.0
-offset_bottom = 102.0
-grow_vertical = 2
-text = "Main Menu"
-
-[node name="NextLevel" type="Button" parent="Panel"]
-visible = false
-layout_mode = 0
-offset_left = 322.0
-offset_top = 222.0
-offset_right = 419.0
-offset_bottom = 254.0
-text = "Next"
 
 [node name="ReqScoreNum" type="Label" parent="Panel"]
 layout_mode = 1
@@ -141,8 +144,32 @@ grow_vertical = 2
 text = "0"
 horizontal_alignment = 1
 
-[connection signal="pressed" from="Panel/Retry" to="." method="_on_retry_pressed"]
-[connection signal="pressed" from="Panel/MainMenu" to="." method="_on_main_menu_pressed"]
-[connection signal="pressed" from="Panel/MainMenu" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Panel/NextLevel" to="." method="_on_next_level_pressed"]
-[connection signal="pressed" from="Panel/NextLevel" to="." method="_on_button_pressed"]
+[node name="Buttons" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.213115
+anchor_top = 0.8125
+anchor_right = 0.213115
+anchor_bottom = 0.8125
+offset_right = 184.0
+offset_bottom = 20.0
+metadata/_edit_use_anchors_ = true
+
+[node name="MainMenu" type="Button" parent="Panel/Buttons"]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="Retry" type="Button" parent="Panel/Buttons"]
+layout_mode = 2
+text = "Retry"
+
+[node name="NextLevel" type="Button" parent="Panel/Buttons"]
+visible = false
+layout_mode = 2
+text = "Next"
+
+[connection signal="pressed" from="Panel/Buttons/MainMenu" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/Buttons/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="Panel/Buttons/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="Panel/Buttons/NextLevel" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/Buttons/NextLevel" to="." method="_on_next_level_pressed"]

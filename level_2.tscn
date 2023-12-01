@@ -1,13 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cy5p3jw4dl1j"]
+[gd_scene load_steps=9 format=3 uid="uid://cy5p3jw4dl1j"]
 
 [ext_resource type="Texture2D" uid="uid://dm5r05ls0gibw" path="res://art/back4.png" id="1_6m0ec"]
 [ext_resource type="Script" path="res://level_2.gd" id="1_d8ax8"]
 [ext_resource type="PackedScene" uid="uid://btmtgx4fc0q0a" path="res://ball.tscn" id="2_61s8f"]
 [ext_resource type="PackedScene" uid="uid://b5uf471e7ddux" path="res://hole.tscn" id="3_ix8f3"]
 [ext_resource type="PackedScene" uid="uid://dhd5j2tr05gc6" path="res://overlay.tscn" id="7_vjjgo"]
-[ext_resource type="AudioStream" uid="uid://bfmbn1kmoqerl" path="res://audio/greatjob.wav" id="8_aqkg6"]
 [ext_resource type="Texture2D" uid="uid://d0lypevw3o2x6" path="res://art/exit.png" id="9_i0jpc"]
-[ext_resource type="AudioStream" uid="uid://1tqiy8tca1pq" path="res://audio/gameover.wav" id="9_uihm2"]
 [ext_resource type="Script" path="res://button_script.gd" id="10_5b2vl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aoubm"]
@@ -56,12 +54,6 @@ icon = ExtResource("9_i0jpc")
 script = ExtResource("10_5b2vl")
 
 [node name="Overlay" parent="." instance=ExtResource("7_vjjgo")]
-
-[node name="Greatjob" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_aqkg6")
-
-[node name="Gameover" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("9_uihm2")
 
 [connection signal="dead" from="Ball" to="." method="_on_ball_dead"]
 [connection signal="hit" from="Ball" to="." method="_on_ball_hit"]

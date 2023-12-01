@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhd5j2tr05gc6"]
+[gd_scene load_steps=6 format=3 uid="uid://dhd5j2tr05gc6"]
 
 [ext_resource type="Script" path="res://overlay.gd" id="1_hql40"]
+[ext_resource type="FontFile" uid="uid://uakgvqmscy1p" path="res://fonts/Xolonium-Regular.ttf" id="2_3qwhm"]
 [ext_resource type="PackedScene" uid="uid://51i50oprbx13" path="res://gameover.tscn" id="2_unv7y"]
+[ext_resource type="AudioStream" uid="uid://bfmbn1kmoqerl" path="res://audio/greatjob.wav" id="4_4drld"]
+[ext_resource type="AudioStream" uid="uid://1tqiy8tca1pq" path="res://audio/gameover.wav" id="5_jipkn"]
 
 [node name="Overlay" type="CanvasLayer"]
 script = ExtResource("1_hql40")
@@ -19,7 +22,17 @@ theme_override_constants/margin_top = 15
 [node name="ScoreLabel" type="Label" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_3qwhm")
+theme_override_font_sizes/font_size = 22
 text = "Score: 0"
 
 [node name="Game_Over" parent="." instance=ExtResource("2_unv7y")]
 visible = false
+
+[node name="Greatjob" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_4drld")
+
+[node name="Gameover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_jipkn")
