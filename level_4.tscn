@@ -14,23 +14,29 @@
 script = ExtResource("1_i8xco")
 
 [node name="Bachground" type="Sprite2D" parent="."]
-position = Vector2(577, 336)
-scale = Vector2(0.748047, 0.628906)
+position = Vector2(576, 324.5)
+scale = Vector2(0.75, 0.633789)
 texture = ExtResource("1_firb5")
 
 [node name="Border" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Border"]
 visible = false
-polygon = PackedVector2Array(83, 70, 447, 211, 580, 264, 1056, 58, 1071, 63, 1071, 94, 1004, 334, 1075, 562, 1086, 622, 1061, 636, 944, 587, 763, 518, 632, 472, 555, 475, 317, 550, 100, 622, 82, 606, 174, 364, 108, 595, 451, 484, 573, 446, 830, 520, 1067, 611, 1033, 486, 984, 339, 1050, 86, 588, 289, 537, 279, 179, 130, 106, 94, 133, 145, 179, 367)
-
-[node name="Ball" parent="." instance=ExtResource("2_eo2mw")]
+polygon = PackedVector2Array(82, 649, 93, 604, 598, 439, 1088, 622, 991, 321, 1079, 42, 585, 273, 87, 47, 174, 340, 84, 589, 28, 597, 27, 21, 1121, 18, 1123, 648)
 
 [node name="Hole" parent="." node_paths=PackedStringArray("ball") instance=ExtResource("3_idpf7")]
-position = Vector2(911, 351)
+position = Vector2(578, 359)
 ball = NodePath("../Ball")
 
+[node name="Hole2" parent="." node_paths=PackedStringArray("ball") instance=ExtResource("3_idpf7")]
+position = Vector2(892, 330)
+ball = NodePath("../Ball")
+
+[node name="Ball" parent="." instance=ExtResource("2_eo2mw")]
+position = Vector2(280, 343)
+
 [node name="Button" type="Button" parent="."]
+visible = false
 offset_left = 36.0
 offset_top = 35.0
 offset_right = 94.0
@@ -46,6 +52,6 @@ stream = ExtResource("8_6fluc")
 [node name="Gameover" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_etlrv")
 
+[connection signal="dead" from="Ball" to="." method="_on_ball_dead"]
 [connection signal="hit" from="Ball" to="." method="_on_ball_hit"]
-[connection signal="lvl_complete" from="Hole" to="." method="_on_hole_lvl_complete"]
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

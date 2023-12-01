@@ -10,13 +10,11 @@ var reqscore = 5
 func _ready():
 	pass # Replace with function body.
 
-
 func _on_ball_hit():
 	score += 1
 	$Overlay.update_score(score)
-	
-func _on_hole_lvl_complete():
-	print(gos)
+
+func _on_ball_dead():
 	finscore.text = str(score)
 	reqscorenum.text = str(reqscore)
 	if score >= reqscore:

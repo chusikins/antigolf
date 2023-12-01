@@ -1,6 +1,7 @@
 extends RigidBody2D
 
 signal hit
+signal dead
 
 @export var movement_threshold:float = 10
 @export var min_vector:float = 100
@@ -73,24 +74,14 @@ func _mouse_released():
 		_play_hit_sfx()
 
 
-
-
-func _on_area_2d_area_entered(area):
-	# print(area.name, " entered ball")
-	# change scenes
-	#if area.name == "hole_area":
-		#print("area check")
-	if area.name == "SandArea":
-		print("Ball in sand!")
-		print("x = ", linear_velocity.length())
-		linear_velocity = linear_velocity * (0.5)
-		print("x = ", linear_velocity.length())
-	
-
-
-func _on_area_2d_area_exited(area):
-	print(area.name, " exited ball")
-	
-
 func _on_body_entered(body):
 	$collisionSFX.play()
+
+
+func _on_center_body_entered(body):
+	emit_signal("dead")
+	queue_free()
+
+
+func _on_center_area_entered(area):
+	linear_velocity = linear_velocity * (0.5)

@@ -11,13 +11,26 @@ config_version=5
 [application]
 
 config/name="antigor"
-run/main_scene="res://main.tscn"
+run/main_scene="res://menu.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Main="*res://main.tscn"
+
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="ignore"
+
+[layer_names]
+
+2d_physics/layer_1="walls"
+2d_physics/layer_2="ball"
+2d_physics/layer_3="hole"
+2d_physics/layer_4="center"
+2d_physics/layer_5="sand"
 
 [rendering]
 

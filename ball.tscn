@@ -12,11 +12,11 @@ bounce = 1.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_1uder"]
 radius = 13.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_cf8dk"]
-radius = 20.025
+[sub_resource type="CircleShape2D" id="CircleShape2D_d8a11"]
+radius = 0.3
 
 [node name="Ball" type="RigidBody2D" groups=["Player"]]
-position = Vector2(324, 347)
+collision_layer = 2
 mass = 0.3
 physics_material_override = SubResource("PhysicsMaterial_uaxhu")
 gravity_scale = 0.0
@@ -36,12 +36,13 @@ texture = ExtResource("2_t15bb")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_1uder")
 
-[node name="ball_area" type="Area2D" parent="."]
+[node name="Center" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 20
+monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ball_area"]
-shape = SubResource("CircleShape2D_cf8dk")
-
-[node name="Node" type="Node" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Center"]
+shape = SubResource("CircleShape2D_d8a11")
 
 [node name="hitSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_5fqpc")
@@ -50,5 +51,5 @@ stream = ExtResource("3_5fqpc")
 stream = ExtResource("4_supgu")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="area_entered" from="ball_area" to="." method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="ball_area" to="." method="_on_area_2d_area_exited"]
+[connection signal="area_entered" from="Center" to="." method="_on_center_area_entered"]
+[connection signal="body_entered" from="Center" to="." method="_on_center_body_entered"]

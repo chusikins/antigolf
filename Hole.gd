@@ -1,28 +1,20 @@
 extends CharacterBody2D
 
 
-@export var acceleration:float = 100
+@export var acceleration:float
+@export var start_speed:float
 @export var ball: RigidBody2D
-signal lvl_complete
-var speed = 20
+
+var speed = 0
+
+func _ready():
+	speed = start_speed
 
 func _physics_process(delta):
-	speed += delta * acceleration
-	var direction = position.direction_to(ball.position).normalized()
-	velocity = direction * speed
+	if ball && is_instance_valid(ball):
+		speed += delta * acceleration
+		var direction = position.direction_to(ball.position).normalized()
+		velocity = direction * speed
+	else:
+		velocity = Vector2(0,0)
 	move_and_slide()
-	
-
-
-func _on_area_2d_area_entered(area):
-	# print(area.name, " entered hole")
-	pass
-
-
-func _on_area_2d_area_exited(area):
-	# print(area.name, " exited hole")
-	pass
-
-
-func _on_hole_area_lvl_complete():
-	lvl_complete.emit()

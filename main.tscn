@@ -1,21 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqoujufjjou5t"]
+[gd_scene load_steps=2 format=3 uid="uid://cqoujufjjou5t"]
 
-[ext_resource type="PackedScene" uid="uid://0w6mvuuy8jcx" path="res://menu.tscn" id="1_7ptxq"]
-[ext_resource type="Texture2D" uid="uid://mv2h3qhmyrs5" path="res://art/cover.png" id="1_k64qe"]
 [ext_resource type="AudioStream" uid="uid://bt0rael3upush" path="res://audio/bgmusictemp.ogg" id="2_tlkgm"]
 
 [node name="Main" type="Node"]
-
-[node name="TextureRect" type="TextureRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_k64qe")
-expand_mode = 5
-
-[node name="Menu" parent="." instance=ExtResource("1_7ptxq")]
 
 [node name="bgmusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_tlkgm")

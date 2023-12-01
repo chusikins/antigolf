@@ -1,21 +1,33 @@
-[gd_scene load_steps=6 format=3 uid="uid://0w6mvuuy8jcx"]
+[gd_scene load_steps=9 format=3 uid="uid://0w6mvuuy8jcx"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_27eok"]
 [ext_resource type="FontFile" uid="uid://uakgvqmscy1p" path="res://fonts/Xolonium-Regular.ttf" id="2_l7max"]
 [ext_resource type="Texture2D" uid="uid://dpp6i8153ti8y" path="res://art/button.png" id="2_u2xvt"]
+[ext_resource type="Texture2D" uid="uid://mv2h3qhmyrs5" path="res://art/cover.png" id="2_yjdp2"]
+[ext_resource type="Texture2D" uid="uid://blqse2gwopgyy" path="res://art/button_lit.png" id="4_1xb88"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_35ipg"]
+texture = ExtResource("4_1xb88")
+expand_margin_left = 20.0
+expand_margin_top = 5.0
+expand_margin_right = 20.0
+expand_margin_bottom = 15.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lwf7f"]
 texture = ExtResource("2_u2xvt")
-texture_margin_bottom = 2.0
 expand_margin_left = 20.0
-expand_margin_top = 10.0
+expand_margin_top = 5.0
 expand_margin_right = 20.0
-expand_margin_bottom = 10.0
+expand_margin_bottom = 15.0
 
 [sub_resource type="Theme" id="Theme_db3sf"]
 Button/font_sizes/font_size = 25
 Button/fonts/font = ExtResource("2_l7max")
+Button/styles/focus = SubResource("StyleBoxTexture_35ipg")
+Button/styles/hover = SubResource("StyleBoxTexture_35ipg")
 Button/styles/normal = SubResource("StyleBoxTexture_lwf7f")
+Button/styles/pressed = SubResource("StyleBoxTexture_lwf7f")
+VBoxContainer/constants/separation = 30
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -25,6 +37,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_27eok")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -60.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_yjdp2")
+expand_mode = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -40,7 +64,6 @@ offset_bottom = 50.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_db3sf")
-theme_override_constants/separation = 20
 
 [node name="Start Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2

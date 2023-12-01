@@ -12,13 +12,11 @@ func _ready():
 	pass
 
 
-
 func _on_ball_hit():
 	score += 1
 	$Overlay.update_score(score)
 
-
-func _on_hole_lvl_complete():
+func _on_ball_dead():
 	print(gos)
 	finscore.text = str(score)
 	reqscorenum.text = str(reqscore)

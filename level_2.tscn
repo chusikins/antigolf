@@ -11,37 +11,40 @@
 [ext_resource type="Script" path="res://button_script.gd" id="10_5b2vl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aoubm"]
-size = Vector2(991.812, 197.977)
+size = Vector2(1011.63, 198.109)
 
 [node name="Level 2" type="Node2D"]
 script = ExtResource("1_d8ax8")
 
 [node name="Bachground" type="Sprite2D" parent="."]
-position = Vector2(576.5, 324)
-scale = Vector2(0.736328, 0.615234)
+position = Vector2(576, 324)
+scale = Vector2(0.75, 0.632813)
 texture = ExtResource("1_6m0ec")
 
 [node name="Border" type="StaticBody2D" parent="."]
+collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Border"]
 visible = false
-position = Vector2(6, 8)
-rotation = -0.00986204
-polygon = PackedVector2Array(338.903, 214.353, 755.379, 269.463, 1084.46, 59.6978, 1010.25, 587.992, 755.269, 483.472, 380.672, 440.776, 47.3959, 568.495, 148.342, 67.4662, 135.698, 31.3398, 120.698, 31.1918, 23.2294, 585.258, 32.081, 600.346, 375.554, 452.726, 753.101, 500.451, 1027.03, 610.158, 1104.82, 23.8967, 751.587, 248.424, 361.099, 194.571, 144.707, 30.4286, 148.371, 64.4664)
-
-[node name="Ball" parent="." instance=ExtResource("2_61s8f")]
+polygon = PackedVector2Array(50, 20, 139, 38, 356, 207, 762, 256, 1115, 28, 1037, 610, 767, 491, 399, 453, 38, 601, 130, 49, 50, 55, 23, 619, 1079, 635, 1143, 15)
 
 [node name="Hole" parent="." node_paths=PackedStringArray("ball") instance=ExtResource("3_ix8f3")]
 position = Vector2(946, 365)
 ball = NodePath("../Ball")
 
+[node name="Ball" parent="." instance=ExtResource("2_61s8f")]
+position = Vector2(221, 310)
+
 [node name="SandArea" type="Area2D" parent="."]
 position = Vector2(761, 210)
 scale = Vector2(0.404762, 0.448)
+collision_layer = 16
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SandArea"]
-position = Vector2(-484.49, 304.725)
-rotation = 0.0749309
+visible = false
+position = Vector2(-486.401, 306.4)
+rotation = 0.0925025
 shape = SubResource("RectangleShape2D_aoubm")
 
 [node name="Button" type="Button" parent="."]
@@ -60,6 +63,6 @@ stream = ExtResource("8_aqkg6")
 [node name="Gameover" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_uihm2")
 
+[connection signal="dead" from="Ball" to="." method="_on_ball_dead"]
 [connection signal="hit" from="Ball" to="." method="_on_ball_hit"]
-[connection signal="lvl_complete" from="Hole" to="." method="_on_hole_lvl_complete"]
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
